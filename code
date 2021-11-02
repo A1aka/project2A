@@ -73,6 +73,13 @@ for i in range(no_iterations):
             )
             
             
-            
+  test_accuracy = sess.run(accuracy, feed_dict={X: mnist_data.test.images, Y: mnist_data.test.labels, prob: 1.0})
+print("\nAccuracy on test set:", test_accuracy)
+
+    img = np.invert(Image.open("number.png").convert('L')).ravel()
+
+prediction = sess.run(tf.argmax(final_layer, 1), feed_dict={X: [img]})
+print ("The number in test image is:", np.squeeze(prediction))
+
             
         
